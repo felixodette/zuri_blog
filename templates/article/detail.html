@@ -1,6 +1,5 @@
-<!-- extends表明此页面继承自 base.html 文件 -->
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title %}
 Article details
@@ -120,7 +119,7 @@ Article details
 
 
             {% load mptt_tags %}
-            <h4>共有{{ comments.count }}条评论</h4>
+            <h4>Share {{ comments.count }} Comments</h4>
             <div class="row">
                 {% recursetree comments %}
                     {% with comment=node %}
@@ -202,7 +201,7 @@ Article details
 
         <div class="col-3 mt-4" id="sidebar" class="sidebar">
             <div class="sidebar__inner">
-                <h4><strong>目录</strong></h4>
+                <h4><strong>Contents</strong></h4>
                 <hr>
                 <div>
                     {{ toc|safe }}
@@ -289,7 +288,7 @@ Article details
                         }
                     };
                 } else {
-                    layer.msg("与服务器通信失败..过一会儿再试试呗~");
+                    layer.msg("Failed to communicate with server..Try again later~");
                 }
 
             }

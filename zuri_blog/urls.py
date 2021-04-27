@@ -29,6 +29,6 @@ urlpatterns = [
     path('comment/', include('comments.urls', namespace='comment')),
     path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
     path('notice/', include('notice.urls', namespace='notice')),
-    # path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

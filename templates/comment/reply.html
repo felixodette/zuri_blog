@@ -1,7 +1,7 @@
-{% load staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en-us">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
@@ -38,11 +38,6 @@
             type: 'POST',
             data: {body: content},
             success: function(e){
-
-                // if(e === '200 OK'){
-                //     parent.location.reload();
-                // }
-
                 if(e.code === '200 OK'){
                     parent.post_reply_and_show_it(e.new_comment_id);
                 };

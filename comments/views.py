@@ -34,7 +34,7 @@ def post_comment(request, article_id, parent_comment_id=None):
                     notify.send(
                         request.user,
                         recipient=parent_comment.user,
-                        verb='回复了你',
+                        verb='Replied to you',
                         target=article,
                         action_object=new_comment,
                     )
@@ -48,7 +48,7 @@ def post_comment(request, article_id, parent_comment_id=None):
                 notify.send(
                     request.user,
                     recipient=User.objects.filter(is_superuser=1),
-                    verb='回复了你',
+                    verb='Replied to you',
                     target=article,
                     action_object=new_comment,
                 )
@@ -56,7 +56,7 @@ def post_comment(request, article_id, parent_comment_id=None):
             redirect_url = article.get_absolute_url() + '#comment_elem_' + str(new_comment.id)
             return redirect(redirect_url)
         else:
-            return HttpResponse("表单内容有误，请重新填写。")
+            return HttpResponse("The content of the form is incorrect，Please fill in again。")
     elif request.method == 'GET':
         comment_form = CommentForm()
         context = {
@@ -66,4 +66,4 @@ def post_comment(request, article_id, parent_comment_id=None):
         }
         return render(request, 'comment/reply.html', context)
     else:
-        return HttpResponse("仅接受GET/POST请求。")
+        return HttpResponse("Accept only GET/POST requests.")
